@@ -1,14 +1,33 @@
 {
   "manifest_version": 2,
-  "name": "Schedule → Calendar (Dev)",
-  "version": "0.1",
-  "description": "Dev build: injects a Hello World message into the page.",
-  "permissions": ["activeTab"],
+  "name": "Schedule→GoogleCalendar",
+  "version": "1.0",
+  "description": "Scrape UC Davis schedule and push to Google Calendar",
+  "permissions": [
+    "identity",
+    "https://www.googleapis.com/*"
+  ],
   "content_scripts": [
     {
-      "matches": ["https://my.ucdavis.edu/schedulebuilder/*"],
-      "js": ["contentScript.js"],
+      "matches": [
+        "https://my.ucdavis.edu/schedulebuilder/*"
+      ],
+      "js": [
+        "contentScript.js"
+      ],
       "run_at": "document_idle"
     }
-  ]
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "oauth2": {
+    "client_id": "YOUR_CLIENT_ID.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/calendar.events"
+    ]
+  }
 }

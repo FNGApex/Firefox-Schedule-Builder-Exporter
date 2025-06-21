@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "Schedule → Calendar (Dev)",
+  "version": "0.1",
+  "description": "Dev build: injects a Hello World message into the page.",
+  "permissions": ["activeTab"],
+  "content_scripts": [
+    {
+      "matches": ["https://my.ucdavis.edu/schedulebuilder/*"],
+      "js": ["contentScript.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
